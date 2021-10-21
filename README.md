@@ -2,7 +2,11 @@
 An efficient dynamic menu for X. 
 
 ## dmenu patching project
-combined dmenu patches from succless.org (boarders - lineheight - centered - xyw)
+is a combined dmenu patches from succless.org
+  1. boarders
+  2. lineheight
+  3. centered
+  4. xyw
 
 ## Requirements
 In order to build dmenu you need the Xlib header files.
@@ -13,7 +17,7 @@ In order to build dmenu you need the Xlib header files.
 ```
 $ git clone https://github.com/hzaphry/dmenu.git
 $ cd dmenu/
-$ sudo make install
+$ sudo makepgk -si PKGBUILD
 ```
 
 ## Running dmenu
