@@ -14,7 +14,6 @@ SRC         =$(wildcard $(SRC_DIR)/*.c $(SRC_DIR)/*/*.c $(SRC_DIR)/*/*/*.c)
 OBJ_SUBDIRS =$(patsubst $(SRC_DIR)/%, $(OBJ_DIR)/%, $(SRC_SUBDIRS))
 OBJ         =$(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRC))
 
-
 all: options dmenu
 
 options:
@@ -29,18 +28,16 @@ $(OBJ): $(OBJ_DIR)/%.o : $(SRC_DIR)/%.c | $(OBJ_DIR) $(OBJ_SUBDIRS)
 dmenu: $(OBJ)
 	$(CC) -o $@ $(OBJ) $(LDFLAGS)
 
-#stest: stest.o
-#	$(CC) -o $@ stest.o $(LDFLAGS)
-
-clean:
-	rm -f dmenu $(OBJ_DIR) dmenu-$(VERSION).tar.gz
-
 # Create obj directory if it doesn't exist
 $(OBJ_DIR):
 	@mkdir -p $@
 
 $(OBJ_SUBDIRS):
 	@mkdir -p $@
+
+clean:
+	rm -rf dmenu $(OBJ_DIR) dmenu-$(VERSION).tar.gz
+
 
 dist: clean
 	mkdir -p dmenu-$(VERSION)
