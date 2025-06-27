@@ -1,0 +1,5 @@
+dmenu
+.vimspector.json
+
+# for makefile references
+makefile-reference
