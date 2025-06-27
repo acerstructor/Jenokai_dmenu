@@ -3,6 +3,7 @@
 
 include config.mk
 BIN_DIR :=bin
+MAN_DIR :=man
 SRC_DIR :=src
 OBJ_DIR :=obj
 
@@ -45,7 +46,7 @@ install: all
 	chmod 755 $(DESTDIR)$(PREFIX)/bin/dmenu_path
 	chmod 755 $(DESTDIR)$(PREFIX)/bin/dmenu_run
 	mkdir -p $(DESTDIR)$(MANPREFIX)/man1
-	sed "s/VERSION/$(VERSION)/g" < man/dmenu.1 > $(DESTDIR)$(MANPREFIX)/man1/dmenu.1
+	sed "s/VERSION/$(VERSION)/g" < $(MAN_DIR)/dmenu.1 > $(DESTDIR)$(MANPREFIX)/man1/dmenu.1
 	chmod 644 $(DESTDIR)$(MANPREFIX)/man1/dmenu.1
 
 uninstall:
