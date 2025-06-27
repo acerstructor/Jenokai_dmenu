@@ -45,14 +45,14 @@ install: all
 	chmod 755 $(DESTDIR)$(PREFIX)/bin/dmenu
 	chmod 755 $(DESTDIR)$(PREFIX)/bin/dmenu_path
 	chmod 755 $(DESTDIR)$(PREFIX)/bin/dmenu_run
-	mkdir -p $(DESTDIR)$(MANPREFIX)/man1
-	sed "s/VERSION/$(VERSION)/g" < $(MAN_DIR)/dmenu.1 > $(DESTDIR)$(MANPREFIX)/man1/dmenu.1
-	chmod 644 $(DESTDIR)$(MANPREFIX)/man1/dmenu.1
+	mkdir -p $(DESTDIR)$(PREFIX_MAN)/man1
+	sed "s/VERSION/$(VERSION)/g" < $(MAN_DIR)/dmenu.1 > $(DESTDIR)$(PREFIX_MAN)/man1/dmenu.1
+	chmod 644 $(DESTDIR)$(PREFIX_MAN)/man1/dmenu.1
 
 uninstall:
 	rm -f $(DESTDIR)$(PREFIX)/bin/dmenu\
 		$(DESTDIR)$(PREFIX)/bin/dmenu_path\
 		$(DESTDIR)$(PREFIX)/bin/dmenu_run\
-		$(DESTDIR)$(MANPREFIX)/man1/dmenu.1
+		$(DESTDIR)$(PREFIX_MAN)/man1/dmenu.1
 
 .PHONY: all options clean install uninstall
