@@ -2,7 +2,7 @@
 # See LICENSE file for copyright and license details.
 
 include config.mk
-
+BIN_DIR :=bin
 SRC_DIR :=src
 OBJ_DIR :=obj
 
@@ -26,7 +26,7 @@ $(OBJ): $(OBJ_DIR)/%.o : $(SRC_DIR)/%.c | $(OBJ_DIR) $(OBJ_SUBDIRS)
 	$(CC) -c $< -o $@ $(CFLAGS)
 
 dmenu: $(OBJ)
-	$(CC) -o $@ $(OBJ) $(LDFLAGS)
+	$(CC) -o $(BIN_DIR)/$@ $(OBJ) $(LDFLAGS)
 
 # Create obj directory if it doesn't exist
 $(OBJ_DIR):
@@ -36,7 +36,7 @@ $(OBJ_SUBDIRS):
 	@mkdir -p $@
 
 clean:
-	rm -rf dmenu $(OBJ_DIR)
+	rm -rf $(BIN_DIR)/dmenu $(OBJ_DIR)
 
 install: all
 	mkdir -p $(DESTDIR)$(PREFIX)/bin
