@@ -15,7 +15,7 @@ OBJ_SUBDIRS =$(patsubst $(SRC_DIR)/%, $(OBJ_DIR)/%, $(SRC_SUBDIRS))
 OBJ         =$(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRC))
 
 
-all: options dmenu stest
+all: options dmenu
 
 options:
 	@echo dmenu build options:
@@ -29,11 +29,11 @@ $(OBJ): $(OBJ_DIR)/%.o : $(SRC_DIR)/%.c | $(OBJ_DIR) $(OBJ_SUBDIRS)
 dmenu: $(OBJ)
 	$(CC) -o $@ $(OBJ) $(LDFLAGS)
 
-stest: stest.o
-	$(CC) -o $@ stest.o $(LDFLAGS)
+#stest: stest.o
+#	$(CC) -o $@ stest.o $(LDFLAGS)
 
 clean:
-	rm -f dmenu stest $(OBJ_DIR) dmenu-$(VERSION).tar.gz
+	rm -f dmenu $(OBJ_DIR) dmenu-$(VERSION).tar.gz
 
 # Create obj directory if it doesn't exist
 $(OBJ_DIR):
