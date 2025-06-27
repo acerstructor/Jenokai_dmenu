@@ -1,5 +1,6 @@
-dmenu
-.vimspector.json
+# bin directory
+bin/dmenu
 
-# for makefile references
-makefile-reference
+# vim files
+.vimspector.json
+compile_commands.json
