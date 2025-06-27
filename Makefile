@@ -36,7 +36,7 @@ $(OBJ_SUBDIRS):
 	@mkdir -p $@
 
 clean:
-	rm -rf dmenu $(OBJ_DIR) dmenu-$(VERSION).tar.gz
+	rm -rf dmenu $(OBJ_DIR)
 
 install: all
 	mkdir -p $(DESTDIR)$(PREFIX)/bin
