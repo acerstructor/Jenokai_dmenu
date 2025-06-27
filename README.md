@@ -3,7 +3,7 @@ An efficient dynamic menu for X.
 
 ## dmenu patching project
 is a combined dmenu patches from succless.org
-  1. boarders
+  1. borders
   2. lineheight
   3. centered
   4. xyw
