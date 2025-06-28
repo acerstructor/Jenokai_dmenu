@@ -1,7 +1,8 @@
 # bin directory
 bin/dmenu
+bin/stest
 
-obj/
+*.obj/
 
 # vim files
 .vimspector.json
