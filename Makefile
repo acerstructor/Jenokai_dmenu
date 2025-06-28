@@ -55,7 +55,7 @@ $(DMENU_OBJ_SUBDIRS):
 	@mkdir -p $@
 
 clean:
-	rm -rf $(BIN_DIR)/dmenu $(BIN_DIR)/stest $(DMENU_OBJ_DIR)
+	rm -rf $(BIN_DIR)/dmenu $(BIN_DIR)/stest $(DMENU_OBJ_DIR) $(STEST_OBJ_DIR)
 
 install: all
 	mkdir -p $(DESTDIR)$(PREFIX)/bin
