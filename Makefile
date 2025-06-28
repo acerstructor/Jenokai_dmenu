@@ -4,16 +4,18 @@
 include config.mk
 BIN_DIR :=bin
 MAN_DIR :=man
-SRC_DIR :=src
-OBJ_DIR :=obj
+
+# dmenu files and directories configuration
+DMENU_SRC_DIR :=dmenu/src
+DMENU_OBJ_DIR :=dmenu.obj
 
 # Find all .c files inside SRC_DIR and its subdirectories
-SRC_SUBDIRS =$(wildcard $(SRC_DIR)/*/ $(SRC_DIR)/*/*/)
-SRC         =$(wildcard $(SRC_DIR)/*.c $(SRC_DIR)/*/*.c $(SRC_DIR)/*/*/*.c)
+DMENU_SRC_SUBDIRS =$(wildcard $(DMENU_SRC_DIR)/*/ $(DMENU_SRC_DIR)/*/*/)
+DMENU_SRC         =$(wildcard $(DMENU_SRC_DIR)/*.c $(DMENU_SRC_DIR)/*/*.c $(DMENU_SRC_DIR)/*/*/*.c)
 
 # Define corresponding .o files in OBJ_DIR
-OBJ_SUBDIRS =$(patsubst $(SRC_DIR)/%, $(OBJ_DIR)/%, $(SRC_SUBDIRS))
-OBJ         =$(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRC))
+DMENU_OBJ_SUBDIRS =$(patsubst $(DMENU_SRC_DIR)/%, $(DMENU_OBJ_DIR)/%, $(DMENU_SRC_SUBDIRS))
+DMENU_OBJ         =$(patsubst $(DMENU_SRC_DIR)/%.c, $(DMENU_OBJ_DIR)/%.o, $(DMENU_SRC))
 
 all: options dmenu
 
@@ -23,21 +25,21 @@ options:
 	@echo "LDFLAGS  = $(LDFLAGS)"
 	@echo "CC       = $(CC)"
 
-$(OBJ): $(OBJ_DIR)/%.o : $(SRC_DIR)/%.c | $(OBJ_DIR) $(OBJ_SUBDIRS)
+$(DMENU_OBJ): $(DMENU_OBJ_DIR)/%.o : $(DMENU_SRC_DIR)/%.c | $(DMENU_OBJ_DIR) $(DMENU_OBJ_SUBDIRS)
 	$(CC) -c $< -o $@ $(CFLAGS)
 
-dmenu: $(OBJ)
-	$(CC) -o $(BIN_DIR)/$@ $(OBJ) $(LDFLAGS)
+dmenu: $(DMENU_OBJ)
+	$(CC) -o $(BIN_DIR)/$@ $(DMENU_OBJ) $(LDFLAGS)
 
 # Create obj directory if it doesn't exist
-$(OBJ_DIR):
+$(DMENU_OBJ_DIR):
 	@mkdir -p $@
 
-$(OBJ_SUBDIRS):
+$(DMENU_OBJ_SUBDIRS):
 	@mkdir -p $@
 
 clean:
-	rm -rf $(BIN_DIR)/dmenu $(BIN_DIR)/stest $(OBJ_DIR)
+	rm -rf $(BIN_DIR)/dmenu $(BIN_DIR)/stest $(DMENU_OBJ_DIR)
 
 install: all
 	mkdir -p $(DESTDIR)$(PREFIX)/bin
