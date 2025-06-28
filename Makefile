@@ -59,7 +59,7 @@ clean:
 
 install: all
 	mkdir -p $(DESTDIR)$(PREFIX)/bin
-	cp -f $(BIN_DIR)/* $(DESTDIR)$(PREFIX)/bin
+	cp -f $(BIN_DIR)/dmenu $(BIN_DIR)/dmenu_path $(BIN_DIR)/dmenu_run $(BIN_DIR)/stest $(DESTDIR)$(PREFIX)/bin
 	chmod 755 $(DESTDIR)$(PREFIX)/bin/dmenu
 	chmod 755 $(DESTDIR)$(PREFIX)/bin/dmenu_path
 	chmod 755 $(DESTDIR)$(PREFIX)/bin/dmenu_run
