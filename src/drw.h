@@ -1,4 +1,6 @@
 /* See LICENSE file for copyright and license details. */
+#pragma once
+
 #include "headers.h"
 
 typedef struct {
