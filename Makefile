@@ -66,7 +66,7 @@ install: all
 	chmod 755 $(DESTDIR)$(PREFIX)/bin/stest
 	mkdir -p $(DESTDIR)$(PREFIX_MAN)/man1
 	sed "s/VERSION/$(VERSION)/g" < $(MAN_DIR)/dmenu.1 > $(DESTDIR)$(PREFIX_MAN)/man1/dmenu.1
-	sed "s/VERSION/$(VERSION)/g" < $(MAN_DIR)/stest.1 > $(DESTDIR)$(PREFIX_MAN)/man1/dmenu.1
+	sed "s/VERSION/$(VERSION)/g" < $(MAN_DIR)/stest.1 > $(DESTDIR)$(PREFIX_MAN)/man1/stest.1
 	chmod 644 $(DESTDIR)$(PREFIX_MAN)/man1/dmenu.1
 	chmod 644 $(DESTDIR)$(PREFIX_MAN)/man1/stest.1
 
