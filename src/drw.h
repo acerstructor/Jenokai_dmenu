@@ -1,4 +1,5 @@
 /* See LICENSE file for copyright and license details. */
+#include "headers.h"
 
 typedef struct {
 	Cursor cursor;
