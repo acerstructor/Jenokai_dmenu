@@ -1,6 +1,8 @@
 # bin directory
 bin/dmenu
 
+obj/
+
 # vim files
 .vimspector.json
 compile_commands.json
