@@ -17,7 +17,14 @@ DMENU_SRC         =$(wildcard $(DMENU_SRC_DIR)/*.c $(DMENU_SRC_DIR)/*/*.c $(DMEN
 DMENU_OBJ_SUBDIRS =$(patsubst $(DMENU_SRC_DIR)/%, $(DMENU_OBJ_DIR)/%, $(DMENU_SRC_SUBDIRS))
 DMENU_OBJ         =$(patsubst $(DMENU_SRC_DIR)/%.c, $(DMENU_OBJ_DIR)/%.o, $(DMENU_SRC))
 
-all: options dmenu
+# stest
+STEST_SRC_DIR :=stest/src
+STEST_OBJ_DIR :=stest.obj
+
+STEST_SRC      =$(wildcard $(STEST_SRC_DIR)/*.c $(STEST_SRC_DIR)/*/*.c $(STEST_SRC_DIR)/*/*/*.c)
+STEST_OBJ      =$(patsubst $(STEST_SRC_DIR)/%.c, $(STEST_OBJ_DIR)/%.o, $(STEST_SRC))
+
+all: options stest dmenu
 
 options:
 	@echo dmenu build options:
@@ -28,10 +35,19 @@ options:
 $(DMENU_OBJ): $(DMENU_OBJ_DIR)/%.o : $(DMENU_SRC_DIR)/%.c | $(DMENU_OBJ_DIR) $(DMENU_OBJ_SUBDIRS)
 	$(CC) -c $< -o $@ $(CFLAGS)
 
+$(STEST_OBJ): $(STEST_OBJ_DIR)/%.o : $(STEST_SRC_DIR)/%.c | $(STEST_OBJ_DIR)
+	$(CC) -c $< -o $@ $(CFLAGS)
+
 dmenu: $(DMENU_OBJ)
 	$(CC) -o $(BIN_DIR)/$@ $(DMENU_OBJ) $(LDFLAGS)
 
+stest: $(STEST_OBJ)
+	$(CC) -o $(BIN_DIR)/$@ $(STEST_OBJ) $(LDFLAGS)
+
 # Create obj directory if it doesn't exist
+$(STEST_OBJ_DIR):
+	@mkdir -p $@
+
 $(DMENU_OBJ_DIR):
 	@mkdir -p $@
 
