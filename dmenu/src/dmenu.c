@@ -51,12 +51,12 @@ static int centered = 1;                    /* -c option; centers dmenu on scree
 static int min_width = 500;                    /* minimum width when centered */
 /* -fn option overrides fonts[0]; default X11 font or font set */
 static const char *fonts[] = {
-	"Px437 IBM PGC:size=12"
+	"Agave Nerd Font Mono:style=bold:size=12"
 };
 static const char *prompt      = NULL;      /* -p  option; prompt to the left of input field */
 static const char *colors[SchemeLast][2] = {
 	/*     fg         bg       */
-	[SchemeNorm] = { "#f8f8f2", "#0A0A0A" },
+	[SchemeNorm] = { "#f8f8f2", "#101010" },
 	[SchemeSel] = { "#0A0A0A", "#d2d2b5" },
 	[SchemeOut] = { "#0A0A0A", "#f8f8f2" },
 };
