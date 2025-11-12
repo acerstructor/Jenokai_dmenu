@@ -1,10 +1,10 @@
 # bin directory
 bin/dmenu
 bin/stest
-
+.cache/
 *.obj/
 
 # vim files
 .vimspector.json
 compile_commands.json
-.cache/
+
