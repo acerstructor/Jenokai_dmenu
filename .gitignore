@@ -7,3 +7,4 @@ bin/stest
 # vim files
 .vimspector.json
 compile_commands.json
+.cache/
